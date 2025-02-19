@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Tareas - Task Manager</title>
+    <title>TODO - List</title>
     <style>
         /* Resetear márgenes y paddings */
         * {
@@ -14,87 +14,230 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #8e44ad, #3498db); /* Fondo degradado */
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
+            background-color: #f4f4f9;
         }
 
-        .tasks-container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            box-sizing: border-box;
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100%;
         }
 
-        .tasks-container h2 {
+        .sidebar h1 {
+            font-size: 24px;
             margin-bottom: 30px;
-            color: #333;
-            font-size: 28px;
-            font-weight: 600;
         }
 
-        .task-option {
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: #3498db;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input, .search-bar select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            width: 45%;
+        }
+
+        .search-bar button {
             background-color: #3498db;
             color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
             cursor: pointer;
-            font-size: 18px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
+            font-size: 16px;
         }
 
-        .task-option:hover {
+        .search-bar button:hover {
             background-color: #2980b9;
         }
 
-        .task-option:active {
-            transform: scale(0.98);
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .back-button {
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        td button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .edit-btn {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #e67e22;
+        }
+
+        .complete-btn {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .complete-btn:hover {
+            background-color: #2ecc71;
+        }
+
+        .delete-btn {
             background-color: #e74c3c;
             color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
-            transition: all 0.3s ease;
         }
 
-        .back-button:hover {
+        .delete-btn:hover {
             background-color: #c0392b;
         }
 
-        .back-button:active {
-            transform: scale(0.98);
+        /* Colors for statuses */
+        .status-pending {
+            color: #f39c12;
         }
+
+        .status-in-progress {
+            color: #f1c40f;
+        }
+
+        .status-completed {
+            color: #2ecc71;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="tasks-container">
-        <h2>Gestión de Tareas</h2>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h1>TODO - LIST</h1>
+        <a href="#">All Tasks</a>
+        <a href="#">Calendar</a>
+        <a href="#">Settings</a>
+    </div>
 
-        <!-- Opciones de tareas (dispuestas verticalmente) -->
-        <a href="create_task.html" class="task-option">Creación de tareas</a>
-        <a href="edit_task.html" class="task-option">Edición de tareas</a>
-        <a href="delete_task.html" class="task-option">Eliminación de tareas</a>
-        <a href="filter_task.html" class="task-option">Filtrado de tareas</a>
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Welcome back phol232</h2>
 
-        <!-- Botón para regresar -->
-        <a href="login.html" class="back-button">Cerrar sesión</a>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search by name...">
+            <select>
+                <option value="">All Categories</option>
+                <option value="software">Software</option>
+                <option value="design">Design</option>
+            </select>
+            <button>Search</button>
+        </div>
+
+        <!-- Task Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Prioridad</th>
+                    <th>Status</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tarea 1</td>
+                    <td>Descripción de la tarea 1</td>
+                    <td>Software</td>
+                    <td>Alta</td>
+                    <td class="status-pending">Pendiente</td>
+                    <td>2025-10-03</td>
+                    <td>
+                        <button class="edit-btn">Editar</button>
+                        <button class="complete-btn">Completar</button>
+                        <button class="delete-btn">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tarea 2</td>
+                    <td>Descripción de la tarea 2</td>
+                    <td>Diseño</td>
+                    <td>Media</td>
+                    <td class="status-in-progress">En Proceso</td>
+                    <td>2025-02-03</td>
+                    <td>
+                        <button class="edit-btn">Editar</button>
+                        <button class="complete-btn">Completar</button>
+                        <button class="delete-btn">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tarea 3</td>
+                    <td>Descripción de la tarea 3</td>
+                    <td>Software</td>
+                    <td>Baja</td>
+                    <td class="status-completed">Completada</td>
+                    <td>2025-01-20</td>
+                    <td>
+                        <button class="edit-btn">Editar</button>
+                        <button class="complete-btn">Completar</button>
+                        <button class="delete-btn">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>
