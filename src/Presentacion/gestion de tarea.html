@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas - Task Manager</title>
+    <style>
+        /* Resetear márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #8e44ad, #3498db); /* Fondo degradado */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tasks-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .tasks-container h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .task-option {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .task-option:hover {
+            background-color: #2980b9;
+        }
+
+        .task-option:active {
+            transform: scale(0.98);
+        }
+
+        .back-button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #c0392b;
+        }
+
+        .back-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tasks-container">
+        <h2>Gestión de Tareas</h2>
+
+        <!-- Opciones de tareas (dispuestas verticalmente) -->
+        <a href="create_task.html" class="task-option">Creación de tareas</a>
+        <a href="edit_task.html" class="task-option">Edición de tareas</a>
+        <a href="delete_task.html" class="task-option">Eliminación de tareas</a>
+        <a href="filter_task.html" class="task-option">Filtrado de tareas</a>
+
+        <!-- Botón para regresar -->
+        <a href="login.html" class="back-button">Cerrar sesión</a>
+    </div>
+
+</body>
+</html>

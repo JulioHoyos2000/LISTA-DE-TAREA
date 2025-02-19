@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Task Manager</title>
+    <style>
+        /* Resetear márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #8e44ad, #3498db); /* Fondo degradado */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: rgba(173, 216, 230, 0.9); /* Azul claro */
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+        }
+
+        .input-group label {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .success-message {
+            color: #4CAF50;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .forgot-password {
+            font-size: 14px;
+            color: #3498db;
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Iniciar sesión</h2>
+
+        <!-- Mensaje de error -->
+        <div id="error-message" class="error-message" style="display: none;">
+            Correo electrónico o contraseña incorrectos.
+        </div>
+        <div id="success-message" class="success-message" style="display: none;">
+            Inicio de sesión exitoso. Redirigiendo...
+        </div>
+
+        <!-- Formulario de login -->
+        <form id="login-form">
+            <div class="input-group">
+                <label for="email">Email ID</label>
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+
+            <button type="submit" class="login-button">LOGIN</button>
+        </form>
+
+        <!-- Enlace para recuperar contraseña -->
+        <a href="recover_password.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+
+        const correctEmail = 'user@example.com'; // Simulación de correo correcto
+        const correctPassword = 'password123'; // Simulación de contraseña correcta
+
+        // Manejo del formulario de inicio de sesión
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();  // Evitar el envío tradicional del formulario
+
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            // Validar si las credenciales son correctas
+            if (email === correctEmail && password === correctPassword) {
+                // Mostrar mensaje de éxito
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+
+                // Redirigir después de 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'tasks.html';  // Redirigir a la página de tareas (puedes cambiar la ruta)
+                }, 2000);
+            } else {
+                // Mostrar mensaje de error
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
